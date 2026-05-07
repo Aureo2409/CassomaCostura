@@ -1573,15 +1573,18 @@ function showPage(id){
 
 // Função para deslizar suavemente até um ID específico
 function scrollTo(id) {
-  const elemento = document.getElementById(id);
-  if (elemento) {
-    // Calcula a posição do elemento
-    elemento.scrollIntoView({ 
-      behavior: 'smooth', 
-      block: 'start' 
+  const el = document.getElementById(id);
+  if(el) {
+    const offset = 80; // Altura do teu menu header
+    const bodyRect = document.body.getBoundingClientRect().top;
+    const elementRect = el.getBoundingClientRect().top;
+    const elementPosition = elementRect - bodyRect;
+    const offsetPosition = elementPosition - offset;
+
+    window.scrollTo({
+      top: offsetPosition,
+      behavior: 'smooth'
     });
-  } else {
-    console.warn("Ajudante: O ID '" + id + "' não foi encontrado na página!");
   }
 }
 
