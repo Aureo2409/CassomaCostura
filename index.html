@@ -409,7 +409,7 @@ footer ul a:hover{color:var(--gold2);}
   <a href="cassoma_gala.html" onclick="showPage('vestidos');closeM()">Vestidos</a>
   <a href="cassoma_tradicionais.html" onclick="showPage('tradicionais');closeM()">Tradicionais</a>
   <a href="cassoma_batas.html" onclick="showPage('batas');closeM()">Batas & Kits</a>
-  <a href="cntc" onclick="showPage('home');setTimeout(()=>scrollTo('cntc'),300);closeM()">Contacto</a>
+  <a href="#" onclick="showPage('home');setTimeout(()=>scrollTo('cntc'),300);closeM()">Contacto</a>
 </div>
 
 <!-- ══════════════════════════════════════
@@ -426,7 +426,7 @@ footer ul a:hover{color:var(--gold2);}
       <p class="hero-p">Peças autorais feitas sob medida, com acabamento impecável e atenção a cada detalhe. O seu estilo, a nossa arte.</p>
       <div class="hero-btns">
         <a href="cassoma_historia.html" class="btn-dk" onclick="showPage('historia')">A Nossa História →</a>
-        <a href="cat-section" class="btn-outline" onclick="showPage('home');setTimeout(()=>scrollTo('cat-section'),300)">Ver Colecção</a>
+        <a href="#" class="btn-outline" onclick="showPage('home');setTimeout(()=>scrollTo('colecao'),300)">Ver Colecção</a>
       </div>
     </div>
     <div class="hero-scroll">Descer</div>
@@ -1571,10 +1571,18 @@ function showPage(id){
   nav.classList.remove('sc');
 }
 
-// ── SCROLL TO SECTION (within home page)
-function scrollTo(id){
-  const el=document.getElementById(id);
-  if(el)el.scrollIntoView({behavior:'smooth'});
+// Função para deslizar suavemente até um ID específico
+function scrollTo(id) {
+  const elemento = document.getElementById(id);
+  if (elemento) {
+    // Calcula a posição do elemento
+    elemento.scrollIntoView({ 
+      behavior: 'smooth', 
+      block: 'start' 
+    });
+  } else {
+    console.warn("Ajudante: O ID '" + id + "' não foi encontrado na página!");
+  }
 }
 
 // ── SCROLL REVEAL
